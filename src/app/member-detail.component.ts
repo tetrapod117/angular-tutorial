@@ -30,4 +30,9 @@ export class MemberDetailComponent implements OnInit{
   goBack(): void {
     this.location.back();
   }
+
+  save(): void {
+    this.memberService.update(this.member)
+    .then(() => this.goBack());
+  }
 }
