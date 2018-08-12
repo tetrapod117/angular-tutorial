@@ -44,4 +44,19 @@ export class MemberService {
     .then(() => member)
     .catch(this.handleError);
   }
+
+  create(name: string): Promise<Member>{
+    return this.http.post(this.membersUrl, JSON.stringify({ name: name}),{headers:this.headers})
+      .toPromise()
+      .then(response => response.json().data as Member)
+      .catch(this.handleError)
+  }
+
+  delete(id: number): Promise<void> {
+    const url = `${this.membersUrl}/${id})`;
+    return this.http.delete(url, { headers: this.headers})
+    .toPromise()
+    .then(() => null)
+    .catch(this.handleError);
+  }
 }

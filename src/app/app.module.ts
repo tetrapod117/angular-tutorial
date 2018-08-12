@@ -19,7 +19,7 @@ import { InMemoryDataService } from './in-memory-data.service';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpModule
+    HttpModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService)
   ],
   declarations: [
