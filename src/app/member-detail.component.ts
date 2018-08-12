@@ -7,10 +7,11 @@ import { MemberService } from './member.service';
 
 @Component({
   selector: 'member-detail',
-  templateUrl: './member-detail.component.html'
+  templateUrl: './member-detail.component.html',
+  styleUrls:['./member-detail.component.css']
 })
 export class MemberDetailComponent implements OnInit{
-  @Input() member: Member;
+  member: Member;
 
   constructor(
     private memberService: MemberService,
@@ -23,7 +24,7 @@ export class MemberDetailComponent implements OnInit{
     .switchMap((param: ParamMap) => {
       return this.memberService.getMember(+param.get('id'));
     })
-    .subscribe(member => this.member);
+    .subscribe(member => this.member = member);
   }
 
   goBack(): void {
